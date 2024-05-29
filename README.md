@@ -1,11 +1,14 @@
 # WEB SCRAPING 
 **What is Web Scraping?**
+
 Web scraping is the process of automatically extracting data from websites. This technique involves fetching a web page and then extracting specific information from it, often transforming the data into a structured format such as a CSV file, a database, or JSON. Web scraping can be accomplished using various programming languages and tools, with Python being one of the most popular due to its rich ecosystem of libraries designed for this purpose.
 
 **How Web Scraping Works**
+
 1. Sending a Request: The first step involves sending an HTTP request to the website's server to retrieve the content of the page. This is usually done using libraries like requests in Python.
 
-2. Parsing the Content: Once the content is retrieved, the next step is to parse it to extract the relevant information. This is typically done using HTML parsing libraries like BeautifulSoup or lxml. pythonCopy code  Extracting Data: After parsing the HTML, you can navigate the HTML tree to extract the data you need using various methods provided by the parsing library. pythonCopy code  
+2. Parsing the Content: Once the content is retrieved, the next step is to parse it to extract the relevant information. This is typically done using HTML parsing libraries like BeautifulSoup or lxml. pythonCopy code  Extracting Data: After parsing the HTML, you can navigate the HTML tree to extract the data you need using various methods provided by the parsing library. pythonCopy code
+   
 3. Storing the Data: Finally, the extracted data can be stored in a structured format such as a CSV file, a database, or JSON.  
 
 **Applications of Web Scraping**
@@ -18,6 +21,7 @@ Web scraping is the process of automatically extracting data from websites. This
 7. Social Media Monitoring: Businesses and organizations scrape social media platforms to monitor brand mentions, sentiment analysis, and trending topics.
 
 **Legal and Ethical Considerations**
+
 While web scraping can be a powerful tool, it’s important to use it responsibly and ethically:
 1. Respect robots.txt: Always check the website’s robots.txt file to understand which pages are allowed to be scraped.
 2. Avoid Overloading Servers: Make sure to space out your requests to avoid putting too much load on the website’s server. This is often done by implementing delays between requests.
@@ -27,7 +31,9 @@ While web scraping can be a powerful tool, it’s important to use it responsibl
 **ADDITIONAL: Check for Frames or Shadow DOM**
 
 In web scraping, sometimes the elements you want to interact with are nested inside iframes or shadow DOMs. In such cases, you need to switch the context to the iframe or shadow DOM before you can interact with the elements within them. Here’s how you can handle these scenarios:
+
 **A. Handling iframes**
+
 An iframe is an HTML document embedded within another HTML document. To interact with elements inside an iframe, you need to switch the context to the iframe.
 
 How to handle iframes:
@@ -38,6 +44,7 @@ How to handle iframes:
 
 
 **B. Handling Shadow DOM**
+
 A shadow DOM is a hidden DOM tree attached to a web component. Selenium does not support native shadow DOM interaction directly, so you might need JavaScript to interact with shadow DOM elements.
 
 How to handle shadow DOM:
