@@ -1,4 +1,4 @@
-# WEB SCRAPING
+# WEB SCRAPING 
 **What is Web Scraping?**
 Web scraping is the process of automatically extracting data from websites. This technique involves fetching a web page and then extracting specific information from it, often transforming the data into a structured format such as a CSV file, a database, or JSON. Web scraping can be accomplished using various programming languages and tools, with Python being one of the most popular due to its rich ecosystem of libraries designed for this purpose.
 
@@ -27,7 +27,7 @@ While web scraping can be a powerful tool, it’s important to use it responsibl
 **ADDITIONAL: Check for Frames or Shadow DOM**
 
 In web scraping, sometimes the elements you want to interact with are nested inside iframes or shadow DOMs. In such cases, you need to switch the context to the iframe or shadow DOM before you can interact with the elements within them. Here’s how you can handle these scenarios:
-A. Handling iframes
+**A. Handling iframes**
 An iframe is an HTML document embedded within another HTML document. To interact with elements inside an iframe, you need to switch the context to the iframe.
 
 How to handle iframes:
@@ -37,7 +37,7 @@ How to handle iframes:
 4. Switch back to the main document: Use switch_to.default_content() to switch back to the main document.
 
 
-B. Handling Shadow DOM
+**B. Handling Shadow DOM**
 A shadow DOM is a hidden DOM tree attached to a web component. Selenium does not support native shadow DOM interaction directly, so you might need JavaScript to interact with shadow DOM elements.
 
 How to handle shadow DOM:
