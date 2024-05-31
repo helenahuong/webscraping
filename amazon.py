@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import time
 import random
+import os
 
 url = 'https://www.amazon.com/s?k=imac+desktop+computer&crid=2N1HS3WKJVCMQ&sprefix=imac%2Caps%2C458&ref=nb_sb_ss_ts-doa-p_2_4'
 
@@ -36,13 +37,7 @@ def make_request(url, proxies, headers):
             break
     return None
 
-response = requests.get(url, proxies=proxies, headers=headers)
-if response:
-    print(response.status_code)
-    print(response.text)
-else:
-    print("Failed to retrieve the page after several attempts.")
-
+# Function to parse the HTML response and extract product titles, prices, and image URLs
 def parse_products(html):
     soup = BeautifulSoup(html, 'html.parser')
     products = []
@@ -50,24 +45,50 @@ def parse_products(html):
     for item in soup.select('.s-main-slot .s-result-item'):
         title_element = item.select_one('h2 .a-text-normal')
         price_element = item.select_one('.a-price-whole')
+        image_element = item.select_one('.s-image')
         
-        if title_element and price_element:
+        if title_element and price_element and image_element:
             title = title_element.text.strip()
             price = price_element.text.strip()
+            image_url = image_element['src']
             products.append({
                 'title': title,
-                'price': price
+                'price': price,
+                'image_url': image_url
             })
     
     return products
 
+# Function to download and save images
+def download_image(url, folder_path, file_name):
+    response = requests.get(url, stream=True)
+    if response.status_code == 200:
+        with open(os.path.join(folder_path, file_name), 'wb') as file:
+            for chunk in response.iter_content(1024):
+                file.write(chunk)
+    else:
+        print(f"Failed to download image from {url}")
+
 def main():
+    # Make request to get the HTML content
     response = make_request(url, proxies, headers)
     if response:
         print(response.status_code)
         products = parse_products(response.text)
-        for product in products:
-            print(f"Title: {product['title']}, Price: {product['price']}")
+        
+        # Create folder to save images
+        folder_path = 'product_images'
+        os.makedirs(folder_path, exist_ok=True)
+
+        # Create or open the text file to save titles and prices
+        with open('products.txt', 'w') as f:
+            # Print product information, download images, and write to text file
+            for index, product in enumerate(products):
+                print(f"Title: {product['title']}, Price: {product['price']}, Image URL: {product['image_url']}")
+                # Save image
+                download_image(product['image_url'], folder_path, f"product_{index + 1}.jpg")
+                # Write to text file
+                f.write(f"Title: {product['title']}, Price: {product['price']}\n")
     else:
         print("Failed to retrieve the page after several attempts.")
 
