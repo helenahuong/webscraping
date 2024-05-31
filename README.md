@@ -56,3 +56,26 @@ How to handle shadow DOM:
 
 * Use Selenium: When you need to interact with the webpage (clicks, form submissions, etc.), handle JavaScript-generated content, or perform end-to-end testing.
 * Use Requests and BeautifulSoup: When you need to scrape static content, require faster performance, and do not need to interact with the page beyond reading its HTML.
+
+**When to Use Proxies in Web Scraping**
+
+Proxies are used in web scraping to:
+
+1. Avoid IP Bans: Websites can detect multiple requests coming from the same IP address in a short period and may block that IP. Proxies help distribute requests across different IP addresses, reducing the risk of being banned.
+2. Bypass Rate Limits: Some websites limit the number of requests from a single IP address. Using multiple proxies can help bypass these limits.
+3. Access Geo-Restricted Content: Proxies can be used to scrape content that is restricted to certain geographic locations by using proxies based in those locations.
+4. Enhance Anonymity: Proxies help mask the original IP address, providing an extra layer of anonymity.
+
+**Legality:** Check and comply with the website’s terms of service and relevant data protection laws.
+
+**Advanced Web Scraper**
+
+An advanced web scraper builds upon the basic concepts but incorporates additional features and complexities:
+
+1. Dynamic Content Handling: Many modern websites use JavaScript frameworks (like React or Angular) to render their content dynamically. This means the content you want to scrape might not be directly available in the HTML source code. Advanced web scrapers use tools like Puppeteer or Selenium to control a headless browser and execute JavaScript, allowing them to handle dynamic content.
+2. Data Processing and Analysis: Advanced scrapers often involve more complex data processing. This could include cleaning and transforming the scraped data, deduplicating entries, or performing analysis on the scraped information.
+3. Dealing with Anti-Scraping Measures: Websites often implement measures to block or slow down scrapers, such as CAPTCHAs, IP blocking, or rate limiting. Advanced scrapers need to be able to handle these challenges, which might involve using proxy servers, implementing request delays, or solving CAPTCHAs programmatically.
+4. Scalability and Performance: When scraping large websites with thousands of pages, performance and scalability become important considerations. Advanced scrapers might use techniques like asynchronous scraping, distributed scraping across multiple machines, or optimizing request strategies to improve efficiency.
+5. Handling Authentication and Forms: Sometimes, the data you want to scrape is behind a login wall or requires submitting forms. Advanced scrapers can handle logging in, managing sessions, and submitting forms to access protected content.
+6. Image and File Scraping: In addition to text data, advanced scrapers can also handle scraping images, PDFs, or other files from websites.
+7. Data Storage and Export: Advanced scrapers often need to store and export large amounts of data efficiently. This could involve integrating with databases, generating structured data formats like CSV or JSON, or even feeding the data into a data pipeline for further processing.
